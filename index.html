@@ -1,16 +1,17 @@
 <!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-theme="light">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>KEMET — Ancient Soul · Modern Scent</title>
   <meta name="description" content="KEMET — عطور فاخرة بطراز فرعوني. Ancient Soul · Modern Scent.">
-  <meta name="theme-color" content="#0a0806">
+  <meta name="theme-color" content="#faf5e8">
   <meta property="og:title" content="KEMET — Ancient Soul · Modern Scent">
   <meta property="og:image" content="assets/box-open.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <script>try{var s=localStorage.getItem("kemet-theme");if(s==="dark"||s==="light")document.documentElement.setAttribute("data-theme",s)}catch(e){}</script>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -55,6 +56,15 @@
         <path d="M20 28Q34 28 38 17Q29 17 20 28Z"/>
       </g>
     </symbol>
+    <symbol id="moon" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7Z"/>
+    </symbol>
+    <symbol id="sun" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+        <circle cx="12" cy="12" r="4.2"/>
+        <path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/>
+      </g>
+    </symbol>
     <symbol id="whatsapp" viewBox="0 0 24 24">
       <path fill="currentColor" d="M12.04 2a9.9 9.9 0 0 0-8.5 14.9L2 22l5.25-1.38A9.9 9.9 0 1 0 12.04 2Zm0 1.8a8.1 8.1 0 1 1-4.2 15.03l-.3-.18-3.1.82.83-3.03-.2-.31A8.1 8.1 0 0 1 12.04 3.8Zm-3.2 3.9c-.17 0-.45.06-.69.32-.24.26-.9.88-.9 2.14 0 1.26.92 2.48 1.05 2.65.13.17 1.78 2.83 4.4 3.85 2.18.86 2.62.69 3.1.64.47-.04 1.52-.62 1.73-1.22.22-.6.22-1.12.15-1.22-.06-.11-.24-.17-.5-.3-.26-.13-1.52-.75-1.76-.84-.24-.09-.4-.13-.58.13-.17.26-.67.84-.82 1.01-.15.17-.3.2-.56.07-.26-.13-1.1-.4-2.1-1.3-.78-.69-1.3-1.55-1.45-1.8-.15-.26-.02-.4.11-.53.12-.12.26-.3.39-.45.13-.15.17-.26.26-.43.09-.17.04-.32-.02-.45-.07-.13-.58-1.4-.8-1.92-.2-.5-.42-.43-.58-.44h-.5Z"/>
     </symbol>
@@ -78,6 +88,10 @@
 
     <div class="header-actions">
       <button class="lang" id="langBtn" type="button" data-i18n="lang.switch">English</button>
+      <button class="theme-btn" id="themeBtn" type="button" aria-label="Dark mode">
+        <svg class="icon i-moon" aria-hidden="true"><use href="#moon"/></svg>
+        <svg class="icon i-sun" aria-hidden="true"><use href="#sun"/></svg>
+      </button>
       <a class="btn btn-gold btn-sm" data-wa="generic" href="#contact" target="_blank" rel="noopener">
         <svg class="icon" aria-hidden="true"><use href="#whatsapp"/></svg>
         <span data-i18n="cta.whatsapp">تواصل واتساب</span>
@@ -109,7 +123,8 @@
 
       <figure class="hero-art">
         <div class="frame">
-          <img src="assets/box-open.webp" width="1086" height="1448" alt="KEMET Karnak — Extrait de Parfum inside its Pharaonic gift box" fetchpriority="high">
+          <img class="for-light" src="assets/logo-light.webp" width="1254" height="1254" alt="KEMET logo — golden scarab and sun disc, Ancient Soul · Modern Scent" fetchpriority="high">
+          <img class="for-dark" src="assets/logo-dark.webp" width="1254" height="1254" alt="KEMET logo — golden scarab and sun disc, Ancient Soul · Modern Scent">
         </div>
         <figcaption><svg class="icon" aria-hidden="true"><use href="#eye"/></svg><span data-i18n="hero.badge">جوهر الحضارة القديمة</span></figcaption>
       </figure>
@@ -155,29 +170,11 @@
     </div>
   </section>
 
-  <!-- BRAND (light band) -->
-  <section class="section brand" id="brand">
-    <div class="wrap split">
-      <div class="brand-copy">
-        <p class="eyebrow dark"><svg class="icon" aria-hidden="true"><use href="#ankh"/></svg><span data-i18n="brand.eyebrow">هوية كيميت</span></p>
-        <h2 data-i18n="brand.title">الجعران والشمس</h2>
-        <p data-i18n="brand.text">الجعران رمز التجدد، وقرص الشمس رمز الخلود. اجتمعا في شعارنا ليحكيا ما نصنعه: عطر يبقى في الذاكرة.</p>
-        <ul class="features">
-          <li><svg class="icon" aria-hidden="true"><use href="#eye"/></svg><div><h3 data-i18n="brand.f1.t">إلهام فرعوني</h3><p data-i18n="brand.f1.d">نقوش وذهب وظلال المعابد في كل تفصيلة.</p></div></li>
-          <li><svg class="icon" aria-hidden="true"><use href="#lotus"/></svg><div><h3 data-i18n="brand.f2.t">تغليف فاخر</h3><p data-i18n="brand.f2.d">علبة تُفتح كأنها بوابة معبد، تحمي الزجاجة وتعلن عنها.</p></div></li>
-          <li><svg class="icon" aria-hidden="true"><use href="#ankh"/></svg><div><h3 data-i18n="brand.f3.t">طلب سهل</h3><p data-i18n="brand.f3.d">اطلب وتابع مباشرة على واتساب بدون تعقيد.</p></div></li>
-        </ul>
-      </div>
-      <figure class="brand-art">
-        <img src="assets/logo-light.webp" width="1254" height="1254" alt="KEMET logo — golden scarab and sun disc, Ancient Soul · Modern Scent" loading="lazy">
-      </figure>
-    </div>
-  </section>
-
   <!-- CONTACT -->
   <section class="section contact" id="contact">
     <div class="wrap contact-box">
-      <img class="contact-logo" src="assets/logo-dark.webp" width="1254" height="1254" alt="KEMET logo on black" loading="lazy">
+      <img class="contact-logo for-light" src="assets/logo-light.webp" width="1254" height="1254" alt="KEMET logo" loading="lazy">
+      <img class="contact-logo for-dark" src="assets/logo-dark.webp" width="1254" height="1254" alt="KEMET logo" loading="lazy">
       <div class="contact-copy">
         <p class="eyebrow"><svg class="icon" aria-hidden="true"><use href="#lotus"/></svg><span data-i18n="contact.eyebrow">تواصل معنا</span></p>
         <h2 class="gold-text" data-i18n="contact.title">جاهز لتجربة كيميت؟</h2>

@@ -38,6 +38,8 @@ window.KEMET = {
       "nav.story": "الحكاية",
       "nav.contact": "تواصل معنا",
       "lang.switch": "English",
+      "theme.toDark": "الوضع الداكن",
+      "theme.toLight": "الوضع الفاتح",
       "cta.whatsapp": "تواصل واتساب",
 
       "hero.eyebrow": "إكستريت دو بارفان",
@@ -69,16 +71,6 @@ window.KEMET = {
         "نستلهم من المعابد والأعمدة والشمس على الذهب، ونحوّل هذا الإرث إلى عطور تُلبس اليوم: عمق شرقي بروح عصرية، في زجاجة وعلبة تليق بالملوك.",
       "story.tag": "روح قديمة · عطر عصري",
 
-      "brand.eyebrow": "هوية كيميت",
-      "brand.title": "الجعران والشمس",
-      "brand.text":
-        "الجعران رمز التجدد، وقرص الشمس رمز الخلود. اجتمعا في شعارنا ليحكيا ما نصنعه: عطر يبقى في الذاكرة.",
-      "brand.f1.t": "إلهام فرعوني",
-      "brand.f1.d": "نقوش وذهب وظلال المعابد في كل تفصيلة.",
-      "brand.f2.t": "تغليف فاخر",
-      "brand.f2.d": "علبة تُفتح كأنها بوابة معبد، تحمي الزجاجة وتعلن عنها.",
-      "brand.f3.t": "طلب سهل",
-      "brand.f3.d": "اطلب وتابع مباشرة على واتساب بدون تعقيد.",
 
       "contact.eyebrow": "تواصل معنا",
       "contact.title": "جاهز لتجربة كيميت؟",
@@ -97,6 +89,8 @@ window.KEMET = {
       "nav.story": "Story",
       "nav.contact": "Contact",
       "lang.switch": "العربية",
+      "theme.toDark": "Dark mode",
+      "theme.toLight": "Light mode",
       "cta.whatsapp": "WhatsApp us",
 
       "hero.eyebrow": "Extrait de Parfum",
@@ -128,16 +122,6 @@ window.KEMET = {
         "We draw on temples, columns and sunlight on gold, and turn that heritage into fragrances made to be worn today: oriental depth with a modern spirit, in a bottle and box fit for kings.",
       "story.tag": "Ancient Soul · Modern Scent",
 
-      "brand.eyebrow": "The Kemet Identity",
-      "brand.title": "The Scarab & The Sun",
-      "brand.text":
-        "The scarab stands for renewal and the sun disc for eternity. Together in our mark, they say what we make: a scent that stays in memory.",
-      "brand.f1.t": "Pharaonic inspiration",
-      "brand.f1.d": "Carvings, gold and temple shadows in every detail.",
-      "brand.f2.t": "Luxury packaging",
-      "brand.f2.d": "A box that opens like a temple gate, protecting the bottle and announcing it.",
-      "brand.f3.t": "Easy ordering",
-      "brand.f3.d": "Order and follow up directly on WhatsApp, no fuss.",
 
       "contact.eyebrow": "Contact",
       "contact.title": "Ready to experience Kemet?",

@@ -10,6 +10,10 @@
     if (saved === "ar" || saved === "en") lang = saved;
   } catch (e) {}
 
+  // The theme attribute is set by the inline script in <head> (saved choice, else light).
+  var theme = root.getAttribute("data-theme") === "dark" ? "dark" : "light";
+  var themeMeta = document.querySelector('meta[name="theme-color"]');
+
   function t(key) {
     return (K.i18n[lang] && K.i18n[lang][key]) || key;
   }
@@ -123,6 +127,15 @@
     });
   }
 
+  function applyTheme() {
+    root.setAttribute("data-theme", theme);
+    if (themeMeta) themeMeta.setAttribute("content", theme === "dark" ? "#0a0806" : "#faf5e8");
+    var label = t(theme === "dark" ? "theme.toLight" : "theme.toDark");
+    var btn = document.getElementById("themeBtn");
+    btn.setAttribute("aria-label", label);
+    btn.title = label;
+  }
+
   function applyLang() {
     root.lang = lang;
     root.dir = lang === "ar" ? "rtl" : "ltr";
@@ -133,8 +146,16 @@
       a.href = waLink(t("wa.generic"));
     });
     document.getElementById("phoneText").textContent = K.whatsapp.display;
+    applyTheme();
     renderGrid();
   }
+
+  // Theme switch
+  document.getElementById("themeBtn").addEventListener("click", function () {
+    theme = theme === "dark" ? "light" : "dark";
+    try { localStorage.setItem("kemet-theme", theme); } catch (e) {}
+    applyTheme();
+  });
 
   // Language switch
   document.getElementById("langBtn").addEventListener("click", function () {
