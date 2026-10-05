@@ -129,7 +129,7 @@
 
   function applyTheme() {
     root.setAttribute("data-theme", theme);
-    if (themeMeta) themeMeta.setAttribute("content", theme === "dark" ? "#0a0806" : "#e8d3a0");
+    if (themeMeta) themeMeta.setAttribute("content", theme === "dark" ? "#0a0806" : "#dcc28f");
     var label = t(theme === "dark" ? "theme.toLight" : "theme.toDark");
     var btn = document.getElementById("themeBtn");
     btn.setAttribute("aria-label", label);
