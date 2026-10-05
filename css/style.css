@@ -171,7 +171,6 @@ h2 { font-size: clamp(30px, 4vw, 46px); }
 /* Light theme: the logo is printed straight onto the papyrus (no frame, cream background blended away) */
 :root:not([data-theme="dark"]) .hero-art .frame { padding: 0; background: none; border-color: transparent; }
 :root:not([data-theme="dark"]) .hero-art .frame::before, :root:not([data-theme="dark"]) .hero-art .frame::after { display: none; }
-:root:not([data-theme="dark"]) img.for-light { mix-blend-mode: multiply; filter: brightness(1.25); }
 :root:not([data-theme="dark"]) .contact-logo { border-color: transparent; }
 img.for-dark, :root[data-theme="dark"] img.for-light { display: none; }
 :root[data-theme="dark"] img.for-dark { display: block; }
