@@ -43,7 +43,14 @@ window.KEMET = {
       "cta.whatsapp": "تواصل واتساب",
 
       "hero.eyebrow": "إكستريت دو بارفان",
-      "hero.title": "روح قديمة، عطر عصري",
+      "hero.title.a": "روح قديمة،",
+      "hero.title.b": "عطر عصري",
+      "strip.1.t": "إلهام فرعوني",
+      "strip.1.d": "نقوش وذهب وظلال المعابد",
+      "strip.2.t": "تغليف فاخر",
+      "strip.2.d": "علبة كبوابة معبد",
+      "strip.3.t": "طلب سهل",
+      "strip.3.d": "مباشرة على واتساب",
       "hero.text":
         "كيميت — الاسم الذي أطلقه المصريون القدماء على أرضهم. عطور فاخرة مستوحاة من جوهر حضارة عمرها آلاف السنين.",
       "hero.primary": "اكتشف المجموعة",
@@ -94,7 +101,14 @@ window.KEMET = {
       "cta.whatsapp": "WhatsApp us",
 
       "hero.eyebrow": "Extrait de Parfum",
-      "hero.title": "Ancient Soul, Modern Scent",
+      "hero.title.a": "Ancient Soul,",
+      "hero.title.b": "Modern Scent",
+      "strip.1.t": "Pharaonic inspiration",
+      "strip.1.d": "Carvings, gold and temple shadows",
+      "strip.2.t": "Luxury packaging",
+      "strip.2.d": "A box like a temple gate",
+      "strip.3.t": "Easy ordering",
+      "strip.3.d": "Directly on WhatsApp",
       "hero.text":
         "Kemet — the name ancient Egyptians gave their land. Luxury fragrances inspired by the essence of a civilization thousands of years old.",
       "hero.primary": "Explore the collection",

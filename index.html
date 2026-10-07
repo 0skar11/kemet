@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>KEMET — Ancient Soul · Modern Scent</title>
   <meta name="description" content="KEMET — عطور فاخرة بطراز فرعوني. Ancient Soul · Modern Scent.">
-  <meta name="theme-color" content="#dcc28f">
+  <meta name="theme-color" content="#0a0806">
   <meta property="og:title" content="KEMET — Ancient Soul · Modern Scent">
   <meta property="og:image" content="assets/box-open.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,10 +19,14 @@
 <!-- Pharaonic motifs, drawn once and reused with <use> -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <defs>
-    <symbol id="ankh" viewBox="0 0 24 28">
-      <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <ellipse cx="12" cy="7.5" rx="4.6" ry="5.6"/>
-        <path d="M12 13.1V26M5.5 16.5h13"/>
+    <symbol id="scarab" viewBox="0 0 24 28">
+      <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="3.6" r="2.4"/>
+        <path d="M7.6 9.4Q4.6 7.6 6.6 3.4M16.4 9.4Q19.4 7.6 17.4 3.4"/>
+        <path d="M9.6 9.6Q12 8.2 14.4 9.6"/>
+        <path d="M12 9.2c-3.4 0-5.6 3-5.6 7s2.2 7.4 5.6 7.4 5.6-3.4 5.6-7.4-2.2-7-5.6-7Z"/>
+        <path d="M12 10v13"/>
+        <path d="M6.6 13.4 3 12.2M6.4 17.4H2.6M7 21.6 3.6 24M17.4 13.4l3.6-1.2M17.6 17.4h3.8M17 21.6l3.4 2.4"/>
       </g>
     </symbol>
     <symbol id="eye" viewBox="0 0 28 20">
@@ -107,32 +111,27 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="wrap hero-grid">
-      <div class="hero-copy">
-        <p class="eyebrow"><svg class="icon" aria-hidden="true"><use href="#ankh"/></svg><span data-i18n="hero.eyebrow">إكستريت دو بارفان</span></p>
-        <h1 class="gold-text" data-i18n="hero.title">روح قديمة، عطر عصري</h1>
-        <p class="lead" data-i18n="hero.text">كيميت — الاسم الذي أطلقه المصريون القدماء على أرضهم. عطور فاخرة مستوحاة من جوهر حضارة عمرها آلاف السنين.</p>
-        <div class="btn-row">
-          <a class="btn btn-gold" href="#collection" data-i18n="hero.primary">اكتشف المجموعة</a>
-          <a class="btn btn-outline" data-wa="generic" href="#contact" target="_blank" rel="noopener">
-            <svg class="icon" aria-hidden="true"><use href="#whatsapp"/></svg>
-            <span data-i18n="hero.secondary">اطلب عبر واتساب</span>
-          </a>
-        </div>
+    <img class="hero-bg" src="assets/box-open.webp" width="1086" height="1448" alt="KEMET Karnak — Extrait de Parfum inside its Pharaonic gift box" fetchpriority="high">
+    <div class="wrap hero-copy">
+      <p class="eyebrow"><svg class="icon" aria-hidden="true"><use href="#scarab"/></svg><span data-i18n="hero.eyebrow">إكستريت دو بارفان</span></p>
+      <h1 class="hero-title"><span data-i18n="hero.title.a">روح قديمة،</span> <b data-i18n="hero.title.b">عطر عصري</b></h1>
+      <p class="lead" data-i18n="hero.text">كيميت — الاسم الذي أطلقه المصريون القدماء على أرضهم. عطور فاخرة مستوحاة من جوهر حضارة عمرها آلاف السنين.</p>
+      <div class="btn-row">
+        <a class="btn btn-gold" href="#collection" data-i18n="hero.primary">اكتشف المجموعة</a>
+        <a class="btn btn-outline" data-wa="generic" href="#contact" target="_blank" rel="noopener">
+          <svg class="icon" aria-hidden="true"><use href="#whatsapp"/></svg>
+          <span data-i18n="hero.secondary">اطلب عبر واتساب</span>
+        </a>
       </div>
-
-      <figure class="hero-art">
-        <div class="frame">
-          <img class="for-light" src="assets/logo-paper.webp" width="1254" height="1254" alt="KEMET logo — golden scarab and sun disc, Ancient Soul · Modern Scent" fetchpriority="high">
-          <img class="for-dark" src="assets/logo-dark.webp" width="1254" height="1254" alt="KEMET logo — golden scarab and sun disc, Ancient Soul · Modern Scent">
-        </div>
-        <figcaption><svg class="icon" aria-hidden="true"><use href="#eye"/></svg><span data-i18n="hero.badge">جوهر الحضارة القديمة</span></figcaption>
-      </figure>
     </div>
   </section>
 
-  <div class="divider" role="presentation">
-    <svg class="icon sunwing" aria-hidden="true"><use href="#sunwing"/></svg>
+  <div class="strip">
+    <div class="wrap strip-row">
+      <div><b data-i18n="strip.1.t">إلهام فرعوني</b><span data-i18n="strip.1.d">نقوش وذهب وظلال المعابد</span></div>
+      <div><b data-i18n="strip.2.t">تغليف فاخر</b><span data-i18n="strip.2.d">علبة كبوابة معبد</span></div>
+      <div><b data-i18n="strip.3.t">طلب سهل</b><span data-i18n="strip.3.d">مباشرة على واتساب</span></div>
+    </div>
   </div>
 
   <!-- COLLECTION -->
@@ -155,7 +154,7 @@
   <section class="section story" id="story">
     <div class="wrap split">
       <figure class="story-art">
-        <div class="frame frame-round">
+        <div class="plate">
           <img src="assets/bottle-amber.webp" width="1086" height="1448" alt="KEMET Karnak bottle resting on amber water" loading="lazy">
         </div>
       </figure>
