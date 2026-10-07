@@ -78,7 +78,7 @@
       img.loading = "lazy";
       media.appendChild(img);
     } else {
-      media.appendChild(icon("ankh"));
+      media.appendChild(icon("scarab"));
     }
     if (!name) media.appendChild(el("span", "badge", t("card.soon")));
     card.appendChild(media);
@@ -129,7 +129,7 @@
 
   function applyTheme() {
     root.setAttribute("data-theme", theme);
-    if (themeMeta) themeMeta.setAttribute("content", theme === "dark" ? "#0a0806" : "#dcc28f");
+    if (themeMeta) themeMeta.setAttribute("content", "#0a0806");
     var label = t(theme === "dark" ? "theme.toLight" : "theme.toDark");
     var btn = document.getElementById("themeBtn");
     btn.setAttribute("aria-label", label);
