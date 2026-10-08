@@ -21,6 +21,9 @@ window.KEMET = {
     display: "+20 10 98641454",
   },
 
+  // How many perfume slots the collection shows (extra entries in `perfumes` are ignored).
+  collectionLimit: 6,
+
   perfumes: [
     {
       id: 1,
@@ -62,16 +65,8 @@ window.KEMET = {
       "hero.badge": "جوهر الحضارة القديمة",
       "hero.note": "الطلب والاستفسار مباشرة عبر واتساب",
 
-      "strip.1.t": "إلهام فرعوني",
-      "strip.1.d": "نقوش وذهب وظلال المعابد",
-      "strip.2.t": "تغليف فاخر",
-      "strip.2.d": "علبة كبوابة معبد",
-      "strip.3.t": "طلب سهل",
-      "strip.3.d": "مباشرة على واتساب",
-
       "collection.eyebrow": "المجموعة",
       "collection.title": "عطور كيميت",
-      "collection.text": "العطور قيد الإضافة. تابعنا قريباً، أو راسلنا على واتساب لمعرفة أحدث الإصدارات.",
       "card.soon": "قريباً",
       "card.soonName": "عطر جديد",
       "card.soonText": "التفاصيل قيد الإضافة",
@@ -99,12 +94,6 @@ window.KEMET = {
       "contact.text": "راسلنا على واتساب لمعرفة المتوفر من العطور والأسعار وطرق التوصيل.",
       "contact.button": "ابدأ المحادثة على واتساب",
       "contact.number": "رقم التواصل",
-      "steps.1.t": "راسلنا",
-      "steps.1.d": "ابدأ محادثة على واتساب بضغطة واحدة",
-      "steps.2.t": "اختر عطرك",
-      "steps.2.d": "اسأل عن المتوفر وتفاصيل كل عطر",
-      "steps.3.t": "أكّد طلبك",
-      "steps.3.d": "نتفق معك على الأسعار والتوصيل",
 
       "footer.rights": "جميع الحقوق محفوظة",
       "footer.top": "إلى الأعلى",
@@ -136,16 +125,8 @@ window.KEMET = {
       "hero.badge": "The essence of ancient civilization",
       "hero.note": "Ordering and questions directly on WhatsApp",
 
-      "strip.1.t": "Pharaonic inspiration",
-      "strip.1.d": "Carvings, gold and temple shadows",
-      "strip.2.t": "Luxury packaging",
-      "strip.2.d": "A box like a temple gate",
-      "strip.3.t": "Easy ordering",
-      "strip.3.d": "Directly on WhatsApp",
-
       "collection.eyebrow": "The Collection",
       "collection.title": "Kemet Fragrances",
-      "collection.text": "Our fragrances are being added. Check back soon, or message us on WhatsApp for the latest releases.",
       "card.soon": "Coming soon",
       "card.soonName": "New fragrance",
       "card.soonText": "Details are being added",
@@ -173,12 +154,6 @@ window.KEMET = {
       "contact.text": "Message us on WhatsApp for what's available, prices and delivery options.",
       "contact.button": "Start a WhatsApp chat",
       "contact.number": "Contact number",
-      "steps.1.t": "Message us",
-      "steps.1.d": "Start a WhatsApp chat in one tap",
-      "steps.2.t": "Choose your fragrance",
-      "steps.2.d": "Ask what's available and the details of each",
-      "steps.3.t": "Confirm your order",
-      "steps.3.d": "We agree prices and delivery with you",
 
       "footer.rights": "All rights reserved",
       "footer.top": "Back to top",
