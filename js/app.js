@@ -79,7 +79,7 @@
       img.decoding = "async";
       media.appendChild(img);
     } else {
-      media.appendChild(icon("scarab"));
+      media.appendChild(icon("bottle-1"));
     }
     card.appendChild(media);
 
@@ -113,41 +113,71 @@
     meta.appendChild(el("strong", null, price));
     body.appendChild(meta);
 
-    body.appendChild(button("btn btn-outline btn-sm", waLink(t("wa.product") + name), t("card.order"), "whatsapp"));
+    body.appendChild(button("btn btn-gold", waLink(t("wa.product") + name), t("card.order"), "whatsapp"));
 
     card.appendChild(body);
     return card;
   }
 
   var ROMAN = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"];
+  var reduceMotion = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
 
-  // A slot without a name: a sealed cartouche-shaped frame.
+  // A slot without a name: a sealed shelf with its own bottle silhouette (six different ones).
   function renderSlot(index) {
-    var slot = el("div", "slot");
+    var slot = el("div", "slot reveal");
     slot.setAttribute("aria-hidden", "true");
     slot.style.setProperty("--i", String(index));
     var n = index + 1;
     slot.appendChild(el("span", "num", lang === "ar" ? n.toLocaleString("ar-EG") : ROMAN[index] || String(n)));
-    slot.appendChild(icon("scarab"));
+    slot.appendChild(icon("bottle-" + ((index % 6) + 1)));
     slot.appendChild(el("small", null, t("vault.label")));
     return slot;
+  }
+
+  // Items fade and rise one after the other when they scroll into view (only on the first render).
+  var firstRender = true;
+  var revealIO = null;
+  function revealItems(host) {
+    var items = host.querySelectorAll(".reveal");
+    function show(n) { n.classList.add("in", "done"); }
+    if (!firstRender || reduceMotion || !("IntersectionObserver" in window)) {
+      firstRender = false;
+      items.forEach(show);
+      return;
+    }
+    firstRender = false;
+    host.classList.add("reveal-on");
+    revealIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        var n = en.target;
+        revealIO.unobserve(n);
+        n.classList.add("in");
+        setTimeout(function () { n.classList.add("done"); }, 1800);
+      });
+    }, { threshold: 0.2, rootMargin: "0px 0px -30px 0px" });
+    items.forEach(function (n) { revealIO.observe(n); });
   }
 
   function renderGrid() {
     var host = document.getElementById("perfumeGrid");
     host.textContent = "";
 
+    var limit = K.collectionLimit > 0 ? K.collectionLimit : K.perfumes.length;
     var ready = [];
     var pending = [];
-    K.perfumes.forEach(function (p, i) {
+    K.perfumes.slice(0, limit).forEach(function (p, i) {
       if (pick(p && p.name)) ready.push(p);
       else pending.push(i);
     });
 
     if (ready.length) {
       var grid = el("div", "grid");
-      ready.forEach(function (p) {
-        grid.appendChild(renderCard(p));
+      ready.forEach(function (p, i) {
+        var card = renderCard(p);
+        card.classList.add("reveal");
+        card.style.setProperty("--i", String(i));
+        grid.appendChild(card);
       });
       host.appendChild(grid);
     }
@@ -160,9 +190,12 @@
       host.appendChild(vault);
     }
 
-    var cta = el("div", "vault-cta");
+    var cta = el("div", "vault-cta reveal");
+    cta.style.setProperty("--i", String(pending.length ? 6 : 1));
     cta.appendChild(button("btn btn-gold btn-lg", waLink(t("wa.notify")), t("vault.cta"), "whatsapp"));
     host.appendChild(cta);
+
+    revealItems(host);
   }
 
   function applyTheme() {
@@ -196,11 +229,30 @@
     renderGrid();
   }
 
-  // Theme switch
-  document.getElementById("themeBtn").addEventListener("click", function () {
-    theme = theme === "dark" ? "light" : "dark";
-    try { localStorage.setItem("kemet-theme", theme); } catch (e) {}
-    applyTheme();
+  // Theme switch: a circle of the new theme grows out of the button (View Transitions);
+  // browsers without it get a soft colour fade instead.
+  document.getElementById("themeBtn").addEventListener("click", function (e) {
+    var next = theme === "dark" ? "light" : "dark";
+    function swap() {
+      theme = next;
+      try { localStorage.setItem("kemet-theme", theme); } catch (err) {}
+      applyTheme();
+    }
+    if (reduceMotion) { swap(); return; }
+    if (document.startViewTransition) {
+      var r = e.currentTarget.getBoundingClientRect();
+      var x = r.left + r.width / 2;
+      var y = r.top + r.height / 2;
+      var radius = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
+      root.style.setProperty("--tx", x + "px");
+      root.style.setProperty("--ty", y + "px");
+      root.style.setProperty("--tr", radius + "px");
+      document.startViewTransition(swap);
+      return;
+    }
+    root.classList.add("theme-fade");
+    swap();
+    setTimeout(function () { root.classList.remove("theme-fade"); }, 700);
   });
 
   // Language switch
