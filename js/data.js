@@ -42,7 +42,6 @@ window.KEMET = {
       "theme.toLight": "الوضع الفاتح",
       "cta.whatsapp": "تواصل واتساب",
 
-      "hero.eyebrow": "إكستريت دو بارفان",
       "hero.title.a": "روح قديمة،",
       "hero.title.b": "عطر عصري",
       "strip.1.t": "إلهام فرعوني",
@@ -100,7 +99,6 @@ window.KEMET = {
       "theme.toLight": "Light mode",
       "cta.whatsapp": "WhatsApp us",
 
-      "hero.eyebrow": "Extrait de Parfum",
       "hero.title.a": "Ancient Soul,",
       "hero.title.b": "Modern Scent",
       "strip.1.t": "Pharaonic inspiration",
