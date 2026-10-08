@@ -2,11 +2,12 @@
 <html lang="ar" dir="rtl" data-theme="light">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>KEMET — Ancient Soul · Modern Scent</title>
   <meta name="description" content="كيميت KEMET — عطور فاخرة بطراز فرعوني: روح قديمة، عطر عصري. Luxury fragrances inspired by ancient Egypt. اطلب عبر واتساب.">
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#0a0806">
+  <meta name="format-detection" content="telephone=no">
   <link rel="canonical" href="https://kemetpr.com/">
   <link rel="icon" href="favicon.ico" sizes="48x48">
   <link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png">
@@ -20,9 +21,13 @@
   <meta property="og:image" content="https://kemetpr.com/assets/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="KEMET — gold Pharaonic perfume box and bottle">
   <meta property="og:locale" content="ar_AR">
   <meta property="og:locale:alternate" content="en_US">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="KEMET — Ancient Soul · Modern Scent">
+  <meta name="twitter:description" content="كيميت — عطور فاخرة بطراز فرعوني. Luxury fragrances inspired by ancient Egypt.">
+  <meta name="twitter:image" content="https://kemetpr.com/assets/og-image.jpg">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -51,14 +56,43 @@
         "name": "KEMET",
         "inLanguage": ["ar", "en"],
         "publisher": { "@id": "https://kemetpr.com/#organization" }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://kemetpr.com/#webpage",
+        "url": "https://kemetpr.com/",
+        "name": "KEMET — Ancient Soul · Modern Scent",
+        "isPartOf": { "@id": "https://kemetpr.com/#website" },
+        "about": { "@id": "https://kemetpr.com/#organization" },
+        "primaryImageOfPage": { "@type": "ImageObject", "url": "https://kemetpr.com/assets/og-image.jpg" },
+        "inLanguage": "ar"
       }
     ]
   }
   </script>
+
+  <!-- Saved theme + language are applied before first paint (no flash). Default: light, Arabic. -->
+  <script>
+    (function () {
+      var d = document.documentElement;
+      try {
+        var s = localStorage.getItem("kemet-theme");
+        if (s === "dark" || s === "light") d.setAttribute("data-theme", s);
+        var l = localStorage.getItem("kemet-lang");
+        if (l === "en") { d.lang = "en"; d.dir = "ltr"; }
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Hero photo is the largest paint: start fetching it right away -->
+  <link rel="preload" as="image" href="assets/box-open.webp" type="image/webp" fetchpriority="high">
+
+  <!-- Fonts: non-blocking, only the weights the page uses -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <script>try{var s=localStorage.getItem("kemet-theme");if(s==="dark"||s==="light")document.documentElement.setAttribute("data-theme",s)}catch(e){}</script>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cinzel:wght@700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Tajawal:wght@300;400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cinzel:wght@700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Tajawal:wght@300;400;500;700&display=swap"></noscript>
+
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -122,7 +156,7 @@
   </defs>
 </svg>
 
-<a class="skip" href="#collection" data-i18n="nav.collection">المجموعة</a>
+<a class="skip" href="#main" data-i18n="nav.skip">تخطَّ إلى المحتوى</a>
 
 <header class="site-header" id="top">
   <div class="wrap header-row">
@@ -135,79 +169,84 @@
       <a href="#collection" data-i18n="nav.collection">المجموعة</a>
       <a href="#story" data-i18n="nav.story">الحكاية</a>
       <a href="#contact" data-i18n="nav.contact">تواصل معنا</a>
-    </nav>
-
-    <div class="header-actions">
-      <button class="lang" id="langBtn" type="button" data-i18n="lang.switch">English</button>
-      <button class="theme-btn" id="themeBtn" type="button" aria-label="Dark mode">
-        <svg class="icon i-moon" aria-hidden="true"><use href="#moon"/></svg>
-        <svg class="icon i-sun" aria-hidden="true"><use href="#sun"/></svg>
-      </button>
-      <a class="btn btn-gold btn-sm" data-wa="generic" href="#contact" target="_blank" rel="noopener">
+      <a class="nav-wa" data-wa="generic" href="https://wa.me/201098641454?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%83%D9%8A%D9%85%D9%8A%D8%AA%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%A7%D9%84%D8%B9%D8%B7%D9%88%D8%B1%20%D8%A7%D9%84%D9%85%D8%AA%D8%A7%D8%AD%D8%A9." target="_blank" rel="noopener">
         <svg class="icon" aria-hidden="true"><use href="#whatsapp"/></svg>
         <span data-i18n="cta.whatsapp">تواصل واتساب</span>
       </a>
-      <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav">
+    </nav>
+
+    <div class="header-actions">
+      <button class="lang" id="langBtn" type="button" lang="en" data-i18n="lang.switch">English</button>
+      <button class="theme-btn" id="themeBtn" type="button" aria-label="الوضع الداكن">
+        <svg class="icon i-moon" aria-hidden="true"><use href="#moon"/></svg>
+        <svg class="icon i-sun" aria-hidden="true"><use href="#sun"/></svg>
+      </button>
+      <a class="btn btn-gold btn-sm header-wa" data-wa="generic" href="https://wa.me/201098641454?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%83%D9%8A%D9%85%D9%8A%D8%AA%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%A7%D9%84%D8%B9%D8%B7%D9%88%D8%B1%20%D8%A7%D9%84%D9%85%D8%AA%D8%A7%D8%AD%D8%A9." target="_blank" rel="noopener">
+        <svg class="icon" aria-hidden="true"><use href="#whatsapp"/></svg>
+        <span data-i18n="cta.whatsapp">تواصل واتساب</span>
+      </a>
+      <button class="burger" id="burger" type="button" aria-label="القائمة" data-i18n-aria="nav.menu" aria-expanded="false" aria-controls="nav">
         <span></span><span></span><span></span>
       </button>
     </div>
   </div>
 </header>
 
-<main>
+<main id="main" tabindex="-1">
 
   <!-- HERO -->
-  <section class="hero">
-    <img class="hero-bg" src="assets/box-open.webp" width="1086" height="1448" alt="KEMET Karnak — Extrait de Parfum inside its Pharaonic gift box" fetchpriority="high">
+  <section class="hero" aria-labelledby="heroTitle">
+    <img class="hero-bg" src="assets/box-open.webp" width="1086" height="1448" alt="علبة كيميت الفرعونية مفتوحة وبداخلها زجاجة العطر" data-i18n-alt="hero.alt" fetchpriority="high" decoding="async">
     <div class="wrap hero-copy">
-      <h1 class="hero-title"><span data-i18n="hero.title.a">روح قديمة،</span> <b data-i18n="hero.title.b">عطر عصري</b></h1>
+      <p class="hero-eyebrow"><svg class="icon" aria-hidden="true"><use href="#lotus"/></svg><span data-i18n="hero.badge">جوهر الحضارة القديمة</span></p>
+      <h1 class="hero-title" id="heroTitle"><span data-i18n="hero.title.a">روح قديمة،</span> <b data-i18n="hero.title.b">عطر عصري</b></h1>
       <p class="lead" data-i18n="hero.text">كيميت — الاسم الذي أطلقه المصريون القدماء على أرضهم. عطور فاخرة مستوحاة من جوهر حضارة عمرها آلاف السنين.</p>
       <div class="btn-row">
-        <a class="btn btn-gold" href="#collection" data-i18n="hero.primary">اكتشف المجموعة</a>
-        <a class="btn btn-outline" data-wa="generic" href="#contact" target="_blank" rel="noopener">
+        <a class="btn btn-gold btn-lg" data-wa="generic" href="https://wa.me/201098641454?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%83%D9%8A%D9%85%D9%8A%D8%AA%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%A7%D9%84%D8%B9%D8%B7%D9%88%D8%B1%20%D8%A7%D9%84%D9%85%D8%AA%D8%A7%D8%AD%D8%A9." target="_blank" rel="noopener">
           <svg class="icon" aria-hidden="true"><use href="#whatsapp"/></svg>
           <span data-i18n="hero.secondary">اطلب عبر واتساب</span>
         </a>
+        <a class="btn btn-outline btn-lg" href="#collection" data-i18n="hero.primary">اكتشف المجموعة</a>
       </div>
+      <p class="hero-note" data-i18n="hero.note">الطلب والاستفسار مباشرة عبر واتساب</p>
     </div>
   </section>
 
   <div class="strip">
     <div class="wrap strip-row">
-      <div><b data-i18n="strip.1.t">إلهام فرعوني</b><span data-i18n="strip.1.d">نقوش وذهب وظلال المعابد</span></div>
-      <div><b data-i18n="strip.2.t">تغليف فاخر</b><span data-i18n="strip.2.d">علبة كبوابة معبد</span></div>
-      <div><b data-i18n="strip.3.t">طلب سهل</b><span data-i18n="strip.3.d">مباشرة على واتساب</span></div>
+      <div class="strip-item"><svg class="icon" aria-hidden="true"><use href="#eye"/></svg><b data-i18n="strip.1.t">إلهام فرعوني</b><span data-i18n="strip.1.d">نقوش وذهب وظلال المعابد</span></div>
+      <div class="strip-item"><svg class="icon" aria-hidden="true"><use href="#scarab"/></svg><b data-i18n="strip.2.t">تغليف فاخر</b><span data-i18n="strip.2.d">علبة كبوابة معبد</span></div>
+      <div class="strip-item"><svg class="icon" aria-hidden="true"><use href="#whatsapp"/></svg><b data-i18n="strip.3.t">طلب سهل</b><span data-i18n="strip.3.d">مباشرة على واتساب</span></div>
     </div>
   </div>
 
   <!-- COLLECTION -->
-  <section class="section" id="collection">
+  <section class="section" id="collection" aria-labelledby="collectionTitle">
     <div class="wrap">
       <header class="section-head">
         <p class="eyebrow center"><svg class="icon" aria-hidden="true"><use href="#lotus"/></svg><span data-i18n="collection.eyebrow">المجموعة</span></p>
-        <h2 class="gold-text" data-i18n="collection.title">عطور كيميت</h2>
+        <h2 class="gold-text" id="collectionTitle" data-i18n="collection.title">عطور كيميت</h2>
+        <svg class="orn" aria-hidden="true"><use href="#sunwing"/></svg>
         <p class="muted" data-i18n="collection.text">العطور قيد الإضافة. تابعنا قريباً، أو راسلنا على واتساب لمعرفة أحدث الإصدارات.</p>
       </header>
 
       <!-- filled from KEMET.perfumes in js/data.js -->
-      <div class="grid" id="perfumeGrid"></div>
+      <div id="perfumeGrid"></div>
     </div>
   </section>
 
-  <div class="zigzag" role="presentation"></div>
-
   <!-- STORY -->
-  <section class="section story" id="story">
+  <section class="section story" id="story" aria-labelledby="storyTitle">
     <div class="wrap split">
       <figure class="story-art">
         <div class="plate">
-          <img src="assets/bottle-amber.webp" width="1086" height="1448" alt="KEMET Karnak bottle resting on amber water" loading="lazy">
+          <img src="assets/bottle-amber.webp" width="1086" height="1448" alt="زجاجة عطر كيميت كرنك على ماء بلون العنبر" data-i18n-alt="story.alt" loading="lazy" decoding="async">
         </div>
       </figure>
 
       <div class="story-copy">
         <p class="eyebrow"><svg class="icon" aria-hidden="true"><use href="#eye"/></svg><span data-i18n="story.eyebrow">الحكاية</span></p>
-        <h2 class="gold-text" data-i18n="story.title">كيميت.. الأرض السوداء</h2>
+        <h2 class="gold-text" id="storyTitle" data-i18n="story.title">كيميت.. الأرض السوداء</h2>
         <p data-i18n="story.p1">«كيميت» هو الاسم الذي عرفت به مصر القديمة نفسها: الأرض السوداء الخصبة التي صنعها النيل. من هنا بدأت الحضارة، ومن هنا بدأت حكايتنا.</p>
         <p data-i18n="story.p2">نستلهم من المعابد والأعمدة والشمس على الذهب، ونحوّل هذا الإرث إلى عطور تُلبس اليوم: عمق شرقي بروح عصرية، في زجاجة وعلبة تليق بالملوك.</p>
         <p class="tag" data-i18n="story.tag">روح قديمة · عطر عصري</p>
@@ -216,19 +255,28 @@
   </section>
 
   <!-- CONTACT -->
-  <section class="section contact" id="contact">
-    <div class="wrap contact-box">
-      <img class="contact-logo for-light" src="assets/logo-paper.webp" width="1254" height="1254" alt="KEMET logo" loading="lazy">
-      <img class="contact-logo for-dark" src="assets/logo-dark.webp" width="1254" height="1254" alt="KEMET logo" loading="lazy">
-      <div class="contact-copy">
-        <p class="eyebrow"><svg class="icon" aria-hidden="true"><use href="#lotus"/></svg><span data-i18n="contact.eyebrow">تواصل معنا</span></p>
-        <h2 class="gold-text" data-i18n="contact.title">جاهز لتجربة كيميت؟</h2>
-        <p class="lead" data-i18n="contact.text">راسلنا على واتساب لمعرفة المتوفر من العطور والأسعار وطرق التوصيل.</p>
-        <a class="btn btn-gold btn-lg" data-wa="generic" href="#contact" target="_blank" rel="noopener">
-          <svg class="icon" aria-hidden="true"><use href="#whatsapp"/></svg>
-          <span data-i18n="contact.button">ابدأ المحادثة على واتساب</span>
-        </a>
-        <p class="phone"><span data-i18n="contact.number">رقم التواصل</span>: <bdi dir="ltr" id="phoneText">+20 10 98641454</bdi></p>
+  <section class="section contact" id="contact" aria-labelledby="contactTitle">
+    <div class="wrap">
+      <div class="contact-box">
+        <img class="contact-logo for-light" src="assets/logo-paper.webp" width="1254" height="1254" alt="شعار كيميت" data-i18n-alt="contact.logoAlt" loading="lazy" decoding="async">
+        <img class="contact-logo for-dark" src="assets/logo-dark.webp" width="1254" height="1254" alt="شعار كيميت" data-i18n-alt="contact.logoAlt" loading="lazy" decoding="async">
+        <div class="contact-copy">
+          <p class="eyebrow"><svg class="icon" aria-hidden="true"><use href="#lotus"/></svg><span data-i18n="contact.eyebrow">تواصل معنا</span></p>
+          <h2 class="gold-text" id="contactTitle" data-i18n="contact.title">جاهز لتجربة كيميت؟</h2>
+          <p class="lead" data-i18n="contact.text">راسلنا على واتساب لمعرفة المتوفر من العطور والأسعار وطرق التوصيل.</p>
+
+          <ol class="steps">
+            <li><span class="n" aria-hidden="true"></span><div><b data-i18n="steps.1.t">راسلنا</b><span data-i18n="steps.1.d">ابدأ محادثة على واتساب بضغطة واحدة</span></div></li>
+            <li><span class="n" aria-hidden="true"></span><div><b data-i18n="steps.2.t">اختر عطرك</b><span data-i18n="steps.2.d">اسأل عن المتوفر وتفاصيل كل عطر</span></div></li>
+            <li><span class="n" aria-hidden="true"></span><div><b data-i18n="steps.3.t">أكّد طلبك</b><span data-i18n="steps.3.d">نتفق معك على الأسعار والتوصيل</span></div></li>
+          </ol>
+
+          <a class="btn btn-gold btn-lg" data-wa="generic" href="https://wa.me/201098641454?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%83%D9%8A%D9%85%D9%8A%D8%AA%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%A7%D9%84%D8%B9%D8%B7%D9%88%D8%B1%20%D8%A7%D9%84%D9%85%D8%AA%D8%A7%D8%AD%D8%A9." target="_blank" rel="noopener">
+            <svg class="icon" aria-hidden="true"><use href="#whatsapp"/></svg>
+            <span data-i18n="contact.button">ابدأ المحادثة على واتساب</span>
+          </a>
+          <p class="phone"><span data-i18n="contact.number">رقم التواصل</span>: <a href="tel:+201098641454"><bdi dir="ltr" id="phoneText">+20 10 98641454</bdi></a></p>
+        </div>
       </div>
     </div>
   </section>
@@ -236,14 +284,21 @@
 </main>
 
 <footer class="site-footer">
-  <div class="zigzag" role="presentation"></div>
-  <div class="wrap footer-row">
+  <div class="wrap footer-inner">
+    <svg class="orn" aria-hidden="true"><use href="#sunwing"/></svg>
     <span class="wordmark small"><span>KEMET</span></span>
-    <span class="muted"><span id="year">2026</span> KEMET · <span data-i18n="footer.rights">جميع الحقوق محفوظة</span></span>
+    <p class="footer-tag" data-i18n="story.tag">روح قديمة · عطر عصري</p>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="#collection" data-i18n="nav.collection">المجموعة</a>
+      <a href="#story" data-i18n="nav.story">الحكاية</a>
+      <a href="#contact" data-i18n="nav.contact">تواصل معنا</a>
+      <a href="#top" data-i18n="footer.top">إلى الأعلى</a>
+    </nav>
+    <p class="muted copy"><span id="year">2026</span> KEMET · <span data-i18n="footer.rights">جميع الحقوق محفوظة</span></p>
   </div>
 </footer>
 
-<a class="wa-float" data-wa="generic" href="#contact" target="_blank" rel="noopener" aria-label="WhatsApp">
+<a class="wa-float" data-wa="generic" href="https://wa.me/201098641454?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%83%D9%8A%D9%85%D9%8A%D8%AA%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%A7%D9%84%D8%B9%D8%B7%D9%88%D8%B1%20%D8%A7%D9%84%D9%85%D8%AA%D8%A7%D8%AD%D8%A9." target="_blank" rel="noopener" aria-label="تواصل واتساب" data-i18n-aria="cta.whatsapp">
   <svg class="icon" aria-hidden="true"><use href="#whatsapp"/></svg>
 </a>
 

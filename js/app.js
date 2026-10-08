@@ -12,7 +12,6 @@
 
   // The theme attribute is set by the inline script in <head> (saved choice, else light).
   var theme = root.getAttribute("data-theme") === "dark" ? "dark" : "light";
-  var themeMeta = document.querySelector('meta[name="theme-color"]');
 
   function t(key) {
     return (K.i18n[lang] && K.i18n[lang][key]) || key;
@@ -66,9 +65,10 @@
     return row;
   }
 
+  // A perfume that has a name: full product card.
   function renderCard(p) {
     var name = pick(p.name);
-    var card = el("article", "card" + (name ? "" : " is-empty"));
+    var card = el("article", "card");
 
     var media = el("div", "card-media");
     if (p.image) {
@@ -76,21 +76,21 @@
       img.src = p.image;
       img.alt = name || "";
       img.loading = "lazy";
+      img.decoding = "async";
       media.appendChild(img);
     } else {
       media.appendChild(icon("scarab"));
     }
-    if (!name) media.appendChild(el("span", "badge", t("card.soon")));
     card.appendChild(media);
 
     var body = el("div", "card-body");
-    body.appendChild(el("h3", null, name || t("card.soonName")));
+    body.appendChild(el("h3", null, name));
 
     var family = pick(p.family);
     if (family) body.appendChild(el("p", "family", family));
 
     var desc = pick(p.description);
-    body.appendChild(el("p", "muted", desc || (name ? "" : t("card.soonText"))));
+    if (desc) body.appendChild(el("p", "muted", desc));
 
     if (p.notes) {
       var notes = el("dl", "notes");
@@ -106,30 +106,67 @@
 
     var meta = el("div", "card-meta");
     if (p.size) meta.appendChild(el("span", null, p.size));
-    if (name) {
-      var price = typeof p.price === "number" ? p.price.toLocaleString(lang === "ar" ? "ar-EG" : "en-US") + (lang === "ar" ? " ج.م" : " EGP") : t("card.askPrice");
-      meta.appendChild(el("strong", null, price));
-    }
-    if (meta.children.length) body.appendChild(meta);
+    var price =
+      typeof p.price === "number"
+        ? p.price.toLocaleString(lang === "ar" ? "ar-EG" : "en-US") + (lang === "ar" ? " ج.م" : " EGP")
+        : t("card.askPrice");
+    meta.appendChild(el("strong", null, price));
+    body.appendChild(meta);
 
-    var href = name ? waLink(t("wa.product") + name) : waLink(t("wa.generic"));
-    body.appendChild(button("btn btn-outline btn-sm", href, name ? t("card.order") : t("card.ask"), "whatsapp"));
+    body.appendChild(button("btn btn-outline btn-sm", waLink(t("wa.product") + name), t("card.order"), "whatsapp"));
 
     card.appendChild(body);
     return card;
   }
 
+  var ROMAN = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"];
+
+  // A slot without a name: a sealed cartouche-shaped frame.
+  function renderSlot(index) {
+    var slot = el("div", "slot");
+    slot.setAttribute("aria-hidden", "true");
+    slot.style.setProperty("--i", String(index));
+    var n = index + 1;
+    slot.appendChild(el("span", "num", lang === "ar" ? n.toLocaleString("ar-EG") : ROMAN[index] || String(n)));
+    slot.appendChild(icon("scarab"));
+    slot.appendChild(el("small", null, t("vault.label")));
+    return slot;
+  }
+
   function renderGrid() {
-    var grid = document.getElementById("perfumeGrid");
-    grid.textContent = "";
-    K.perfumes.forEach(function (p) {
-      grid.appendChild(renderCard(p));
+    var host = document.getElementById("perfumeGrid");
+    host.textContent = "";
+
+    var ready = [];
+    var pending = [];
+    K.perfumes.forEach(function (p, i) {
+      if (pick(p && p.name)) ready.push(p);
+      else pending.push(i);
     });
+
+    if (ready.length) {
+      var grid = el("div", "grid");
+      ready.forEach(function (p) {
+        grid.appendChild(renderCard(p));
+      });
+      host.appendChild(grid);
+    }
+
+    if (pending.length) {
+      var vault = el("div", "vault");
+      pending.forEach(function (i) {
+        vault.appendChild(renderSlot(i));
+      });
+      host.appendChild(vault);
+    }
+
+    var cta = el("div", "vault-cta");
+    cta.appendChild(button("btn btn-gold btn-lg", waLink(t("wa.notify")), t("vault.cta"), "whatsapp"));
+    host.appendChild(cta);
   }
 
   function applyTheme() {
     root.setAttribute("data-theme", theme);
-    if (themeMeta) themeMeta.setAttribute("content", "#0a0806");
     var label = t(theme === "dark" ? "theme.toLight" : "theme.toDark");
     var btn = document.getElementById("themeBtn");
     btn.setAttribute("aria-label", label);
@@ -139,12 +176,21 @@
   function applyLang() {
     root.lang = lang;
     root.dir = lang === "ar" ? "rtl" : "ltr";
+    document.title = t("meta.title");
     document.querySelectorAll("[data-i18n]").forEach(function (node) {
       node.textContent = t(node.getAttribute("data-i18n"));
+    });
+    document.querySelectorAll("[data-i18n-alt]").forEach(function (node) {
+      node.setAttribute("alt", t(node.getAttribute("data-i18n-alt")));
+    });
+    document.querySelectorAll("[data-i18n-aria]").forEach(function (node) {
+      node.setAttribute("aria-label", t(node.getAttribute("data-i18n-aria")));
     });
     document.querySelectorAll("[data-wa]").forEach(function (a) {
       a.href = waLink(t("wa.generic"));
     });
+    // the button shows the OTHER language, so it must be announced in that language
+    document.getElementById("langBtn").lang = lang === "ar" ? "en" : "ar";
     document.getElementById("phoneText").textContent = K.whatsapp.display;
     applyTheme();
     renderGrid();
@@ -164,27 +210,41 @@
     applyLang();
   });
 
-  // Mobile menu
+  // Header gets a solid background once the page scrolls (or the menu is open)
+  var header = document.querySelector(".site-header");
   var burger = document.getElementById("burger");
   var nav = document.getElementById("nav");
+
+  function syncHeader() {
+    header.classList.toggle("scrolled", window.scrollY > 24);
+  }
+  window.addEventListener("scroll", syncHeader, { passive: true });
+  syncHeader();
+
+  // Mobile menu
   function setMenu(open) {
     nav.classList.toggle("open", open);
+    header.classList.toggle("menu-open", open);
     burger.setAttribute("aria-expanded", String(open));
   }
   burger.addEventListener("click", function () {
     setMenu(!nav.classList.contains("open"));
   });
   nav.addEventListener("click", function (e) {
-    if (e.target.tagName === "A") setMenu(false);
+    if (e.target.closest && e.target.closest("a")) setMenu(false);
   });
-
-  // Header gets a solid background once the page scrolls
-  var header = document.querySelector(".site-header");
-  function onScroll() {
-    header.classList.toggle("scrolled", window.scrollY > 24);
-  }
-  window.addEventListener("scroll", onScroll, { passive: true });
-  onScroll();
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && nav.classList.contains("open")) {
+      setMenu(false);
+      burger.focus();
+    }
+  });
+  document.addEventListener("click", function (e) {
+    if (nav.classList.contains("open") && !header.contains(e.target)) setMenu(false);
+  });
+  window.addEventListener("resize", function () {
+    if (window.innerWidth > 900 && nav.classList.contains("open")) setMenu(false);
+  });
 
   document.getElementById("year").textContent = new Date().getFullYear();
   applyLang();
