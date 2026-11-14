@@ -85,7 +85,7 @@ window.KEMET = {
       "story.p1":
         "«كيميت» هو الاسم الذي عرفت به مصر القديمة نفسها: الأرض السوداء الخصبة التي صنعها النيل. من هنا بدأت الحضارة، ومن هنا بدأت حكايتنا.",
       "story.p2":
-        "نستلهم من المعابد والأعمدة والشمس على الذهب، ونحوّل هذا الإرث إلى عطور تُلبس اليوم: عمق شرقي بروح عصرية، في زجاجة وعلبة تليق بالملوك.",
+        "نستلهم من المعابد والأعمدة والشمس على الذهب، ونحوّل هذا الإرث إلى عطور تُلبس اليوم: عمق شرقي بروح عصرية.",
       "story.tag": "روح قديمة · عطر عصري",
 
       "contact.logoAlt": "شعار كيميت",
@@ -145,7 +145,7 @@ window.KEMET = {
       "story.p1":
         "“Kemet” is the name ancient Egypt gave itself: the fertile black land shaped by the Nile. Civilization began there, and so did our story.",
       "story.p2":
-        "We draw on temples, columns and sunlight on gold, and turn that heritage into fragrances made to be worn today: oriental depth with a modern spirit, in a bottle and box fit for kings.",
+        "We draw on temples, columns and sunlight on gold, and turn that heritage into fragrances made to be worn today: oriental depth with a modern spirit.",
       "story.tag": "Ancient Soul · Modern Scent",
 
       "contact.logoAlt": "KEMET logo",

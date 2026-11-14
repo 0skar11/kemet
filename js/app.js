@@ -124,39 +124,12 @@
 
   // A slot without a name: a sealed shelf with its own bottle silhouette (six different ones).
   function renderSlot(index) {
-    var slot = el("div", "slot reveal");
+    var slot = el("div", "slot");
     slot.setAttribute("aria-hidden", "true");
-    slot.style.setProperty("--i", String(index));
     var n = index + 1;
     slot.appendChild(el("span", "num", lang === "ar" ? n.toLocaleString("ar-EG") : ROMAN[index] || String(n)));
-    slot.appendChild(icon("bottle-" + ((index % 6) + 1)));
     slot.appendChild(el("small", null, t("vault.label")));
     return slot;
-  }
-
-  // Items fade and rise one after the other when they scroll into view (only on the first render).
-  var firstRender = true;
-  var revealIO = null;
-  function revealItems(host) {
-    var items = host.querySelectorAll(".reveal");
-    function show(n) { n.classList.add("in", "done"); }
-    if (!firstRender || reduceMotion || !("IntersectionObserver" in window)) {
-      firstRender = false;
-      items.forEach(show);
-      return;
-    }
-    firstRender = false;
-    host.classList.add("reveal-on");
-    revealIO = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (!en.isIntersecting) return;
-        var n = en.target;
-        revealIO.unobserve(n);
-        n.classList.add("in");
-        setTimeout(function () { n.classList.add("done"); }, 1800);
-      });
-    }, { threshold: 0.2, rootMargin: "0px 0px -30px 0px" });
-    items.forEach(function (n) { revealIO.observe(n); });
   }
 
   function renderGrid() {
@@ -173,11 +146,8 @@
 
     if (ready.length) {
       var grid = el("div", "grid");
-      ready.forEach(function (p, i) {
-        var card = renderCard(p);
-        card.classList.add("reveal");
-        card.style.setProperty("--i", String(i));
-        grid.appendChild(card);
+      ready.forEach(function (p) {
+        grid.appendChild(renderCard(p));
       });
       host.appendChild(grid);
     }
@@ -190,12 +160,9 @@
       host.appendChild(vault);
     }
 
-    var cta = el("div", "vault-cta reveal");
-    cta.style.setProperty("--i", String(pending.length ? 6 : 1));
+    var cta = el("div", "vault-cta");
     cta.appendChild(button("btn btn-gold btn-lg", waLink(t("wa.notify")), t("vault.cta"), "whatsapp"));
     host.appendChild(cta);
-
-    revealItems(host);
   }
 
   function applyTheme() {
