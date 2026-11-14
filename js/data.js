@@ -67,6 +67,7 @@ window.KEMET = {
 
       "collection.eyebrow": "المجموعة",
       "collection.title": "عطور كيميت",
+      "collection.lead": "التشكيلة الكاملة قيد الإعداد. راسلنا لمعرفة المتوفر حالياً.",
       "card.soon": "قريباً",
       "card.soonName": "عطر جديد",
       "card.soonText": "التفاصيل قيد الإضافة",
@@ -127,6 +128,7 @@ window.KEMET = {
 
       "collection.eyebrow": "The Collection",
       "collection.title": "Kemet Fragrances",
+      "collection.lead": "The full range is being prepared. Message us to see what is available now.",
       "card.soon": "Coming soon",
       "card.soonName": "New fragrance",
       "card.soonText": "Details are being added",
